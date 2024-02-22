@@ -1,8 +1,9 @@
 <?php
 
-use App\Http\Controllers\ReportController;
-use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\ReportController;
+use App\Http\Controllers\HomePageController;
 
 // User Web API Routes
 Route::post('/user-registration',[UserController::class,'UserRegistration']);
@@ -16,22 +17,54 @@ Route::post('/reset-password',[UserController::class,'ResetPassword'])->middlewa
 
 
 
+// Robiul islam create this controller 
+
+// Home Page Api Route 
+Route::post("/create-homepage",[HomePageController::class,'HomePageCreate'])->middleware('auth:sanctum');
+Route::get("/list-homepage",[HomePageController::class,'HomePageList'])->middleware('auth:sanctum');
+Route::post("/homepage-by-id",[HomePageController::class,'HomePageByID'])->middleware('auth:sanctum');
+Route::post("/update-homepage",[HomePageController::class,'HomePageUpdate'])->middleware('auth:sanctum');
+Route::post("/delete-homepage",[HomePageController::class,'HomePageDelete'])->middleware('auth:sanctum');
+
+
+
+
+
+
+
+
+
+
+
 // Report
 Route::get("/sales-report/{FormDate}/{ToDate}",[ReportController::class,'SalesReport'])->middleware('auth:sanctum');
 
 
+
+// front-end page Route
+Route::view('/','pages.front-end-page.home-section.home-page');
+Route::view('/about','pages.front-end-page.about-section.about-page');
+Route::view('/job','pages.front-end-page.job-section.job-page');
+Route::view('/contact','pages.front-end-page.contact-section.contact-page');
+
+
+
+
+
+// Back-end Route
+Route::view('Home-Page','pages.dashboard.home-page.home-section');
+Route::view('LabohemeTop','pages.dashboard.laboheme-page.laboheme-top');
 
 
 
 
 
 // Page Routes
-Route::view('/','pages.home');
 Route::view('/userLogin','pages.auth.login-page')->name('login');
 Route::view('/userRegistration','pages.auth.registration-page');
 Route::view('/sendOtp','pages.auth.send-otp-page');
 Route::view('/verifyOtp','pages.auth.verify-otp-page');
 Route::view('/resetPassword','pages.auth.reset-pass-page');
 Route::view('/userProfile','pages.dashboard.profile-page');
-
+Route::view('/dashboardSummary','pages.dashboard.dashboard-page');
 

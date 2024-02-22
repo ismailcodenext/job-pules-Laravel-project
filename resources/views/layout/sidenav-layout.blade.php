@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
-    <title></title>
+    <title>@yield('title') | </title>
 
     <link rel="icon" type="image/x-icon" href="{{asset('/favicon.ico')}}" />
     <link href="{{asset('css/bootstrap.css')}}" rel="stylesheet" />
@@ -12,14 +12,15 @@
     <link href="{{asset('css/style.css')}}" rel="stylesheet" />
     <link href="{{asset('css/toastify.min.css')}}" rel="stylesheet" />
 
-
+    <!-- Include Summernote CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.css" rel="stylesheet">
     <link href="{{asset('https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css')}}" rel="stylesheet" />
 
     <link href="{{asset('css/jquery.dataTables.min.css')}}" rel="stylesheet" />
     <script src="{{asset('js/jquery-3.7.0.min.js')}}"></script>
     <script src="{{asset('js/jquery.dataTables.min.js')}}"></script>
-
-
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="{{asset('js/toastify-js.js')}}"></script>
     <script src="{{asset('js/axios.min.js')}}"></script>
     <script src="{{asset('js/config.js')}}"></script>
@@ -77,9 +78,9 @@
         <span class="side-bar-item-caption">Dashboard</span>
     </a>
 
-    <a href="{{url("/customerPage")}}" class="side-bar-item">
-        <i class="bi bi-people"></i>
-        <span class="side-bar-item-caption">Customer</span>
+    <a href="{{url("/Home-Page")}}" class="side-bar-item">
+        <i class="bi-house-door-fill"></i>
+        <span class="side-bar-item-caption">Home</span>
     </a>
 
     <a href="{{url("/categoryPage")}}" class="side-bar-item">
@@ -115,6 +116,23 @@
     @yield('content')
 </div>
 
+
+
+<script>
+    $('#summernote').summernote({
+      placeholder: 'Content',
+      tabsize: 2,
+      height: 100
+    });
+  </script>
+
+<script>
+    $('#Updatesummernote').summernote({
+      placeholder: 'Update Content',
+      tabsize: 2,
+      height: 100
+    });
+  </script>
 
 
 <script>
