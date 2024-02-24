@@ -17,9 +17,9 @@ Route::post('/reset-password',[UserController::class,'ResetPassword'])->middlewa
 
 
 
-// Robiul islam create this controller 
+// Robiul islam create this controller
 
-// Home Page Api Route 
+// Home Page Api Route
 Route::post("/create-homepage",[HomePageController::class,'HomePageCreate'])->middleware('auth:sanctum');
 Route::get("/list-homepage",[HomePageController::class,'HomePageList'])->middleware('auth:sanctum');
 Route::post("/homepage-by-id",[HomePageController::class,'HomePageByID'])->middleware('auth:sanctum');
@@ -67,4 +67,14 @@ Route::view('/verifyOtp','pages.auth.verify-otp-page');
 Route::view('/resetPassword','pages.auth.reset-pass-page');
 Route::view('/userProfile','pages.dashboard.profile-page');
 Route::view('/dashboardSummary','pages.dashboard.dashboard-page');
+
+
+//popap page route
+Route::view('/popapRegistration','components.front-end.page.popap-page.registration-popap');
+
+
+
+//company registration and login route -> Ismail Hossain
+//Route::view('/companyLogin','components')->name('login');
+Route::view('/companyRegistration','pages.front-end-page.company.registration');
 

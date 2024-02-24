@@ -27,8 +27,8 @@
                         </li>
                     </ul>
                     <div class="navbar_btn">
-                        <a href="#">Login</a>
-                        <a href="#">Sing Up</a>
+                        <a href="#"  data-bs-toggle="modal" data-bs-target="#create-modal">Login</a>
+                        <a href="{{url('/popapRegistration')}}">Sing Up</a>
                     </div>
                 </div>
             </div>
