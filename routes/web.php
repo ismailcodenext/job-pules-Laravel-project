@@ -88,3 +88,7 @@ Route::view('/candidate-registration','pages.front-end-page.candidate.registrati
 // employer & candidate registration and login route -> Robiul
 Route::view('/employer-login','pages.front-end-page.company.login');
 Route::view('/candidate-login','pages.front-end-page.candidate.login');
+
+//employer dashboard
+
+Route::view('/dashboardSummary','components.dashboard.back-end.employer.dashboard-page');
