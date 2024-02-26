@@ -84,6 +84,62 @@ class UserController extends Controller
         }
     }
 
+    public function EmployerLogin(Request $request)
+    {
+        try {
+            $request->validate([
+                'email' => 'required|string|email|max:50',
+                'password' => 'required|string|min:3',
+            ]);
+
+            $user = User::where('email', $request->input('email'))->where('role', 'employer')->first();
+
+            if (!$user || !Hash::check($request->input('password'), $user->password)) {
+                return response()->json(['status' => 'failed', 'message' => 'Invalid User']);
+            }
+
+            if ($user->status === 'pending') {
+                return response()->json(['status' => 'failed', 'message' => 'Your account is pending approval.']);
+            }
+
+            // If status is 'approved', continue with login
+            $token = $user->createToken('authToken')->plainTextToken;
+            return response()->json(['status' => 'success', 'message' => 'Login Successful', 'token' => $token]);
+
+        } catch (Exception $e) {
+            return response()->json(['status' => 'fail', 'message' => $e->getMessage()]);
+        }
+    }
+
+public function CandidateLogin(Request $request)
+    {
+        try {
+            $request->validate([
+                'email' => 'required|string|email|max:50',
+                'password' => 'required|string|min:3',
+            ]);
+
+            $user = User::where('email', $request->input('email'))->where('role', 'candidate')->first();
+
+            if (!$user || !Hash::check($request->input('password'), $user->password)) {
+                return response()->json(['status' => 'failed', 'message' => 'Invalid User']);
+            }
+
+            if ($user->status === 'pending') {
+                return response()->json(['status' => 'failed', 'message' => 'Your account is pending approval.']);
+            }
+
+            // If status is 'approved', continue with login
+            $token = $user->createToken('authToken')->plainTextToken;
+            return response()->json(['status' => 'success', 'message' => 'Login Successful', 'token' => $token]);
+
+        } catch (Exception $e) {
+            return response()->json(['status' => 'fail', 'message' => $e->getMessage()]);
+        }
+    }
+
+
+
     function SendOTPCode(Request $request){
 
         try {

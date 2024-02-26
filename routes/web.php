@@ -15,6 +15,11 @@ Route::post('/send-otp',[UserController::class,'SendOTPCode']);
 Route::post('/verify-otp',[UserController::class,'VerifyOTP']);
 Route::post('/reset-password',[UserController::class,'ResetPassword'])->middleware('auth:sanctum');
 
+//user employer Api route
+Route::post('/user-employer-login',[UserController::class,'EmployerLogin']);
+
+//user candidate Api route
+Route::post('/user-candidate-login',[UserController::class,'CandidateLogin']);
 
 
 // Robiul islam create this controller
@@ -90,5 +95,7 @@ Route::view('/employer-login','pages.front-end-page.company.login');
 Route::view('/candidate-login','pages.front-end-page.candidate.login');
 
 //employer dashboard
+Route::view('/employer-profile','pages.dashboard.employer-page.employer');
 
-Route::view('/dashboardSummary','components.dashboard.back-end.employer.dashboard-page');
+//candidate dashboard
+Route::view('/candidate-profile','pages.dashboard.candidate-page.candidate');

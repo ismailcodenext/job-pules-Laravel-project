@@ -1,41 +1,29 @@
-   <!-- Loging Start -->
-   <section id="loging">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-3"></div>
-            <div class="col-md-6">
-                <div class="loging_content">
-                    <form action="">
-                        <div class="email">
-                            <label for="">E-mail</label>
-                            <input id="email" placeholder="User Email" class="form-control" type="email"/>
-                        </div>
-
-                        <div class="password mt-3">
-                            <label for="">Password</label>
-                            <input id="password" placeholder="User Password" class="form-control" type="password"/>
-                        </div>
-
-                        <div class="loging_btn mt-3">
-                            <button onclick="SubmitLogin()">Sign in</button>
-                        </div>
-                        <div class="loging_gmail mt-3">
-                            <button> <img src="./assets/icon/Group 22.svg" alt="" class="me-2"> Sign in with Google</button>
-                        </div>
-                        <div class="loging_github mt-3">
-                            <button><img src="./assets/icon/394187_github_icon.svg" class="me-2 github_image" alt="">Sign in with GitHub</button>
-                        </div>
-                        <div class="forget_password">
-                            <h5>Don’t have any account?<a href="#">Forget password</a></h5>
-                        </div>
-                    </form>
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-7 animated fadeIn col-lg-6 center-screen">
+            <div class="card w-90  p-4">
+                <div class="card-body">
+                    <h4>SIGN IN</h4>
+                    <br/>
+                    <input id="email" placeholder="User Email" class="form-control" type="email"/>
+                    <br/>
+                    <input id="password" placeholder="User Password" class="form-control" type="password"/>
+                    <br/>
+                    <button onclick="SubmitLogin()" class="btn w-100 bg-gradient-primary">Next</button>
+                    <hr/>
+                    <div class="float-end mt-3">
+                        <span>
+{{--                            <a class="text-center ms-3 h6" href="{{url('/userRegistration')}}">Sign Up </a>--}}
+                            <span class="ms-1">|</span>
+                            <a class="text-center ms-3 h6" href="{{url('/sendOtp')}}">Forget Password</a>
+                        </span>
+                    </div>
                 </div>
             </div>
-            <div class="col-md-3"></div>
         </div>
     </div>
-</section>
-<!-- Loging End -->
+</div>
+
 
 <script>
 
@@ -51,11 +39,11 @@
         }
         else{
             showLoader();
-            let res=await axios.post("/user-login",{email:email, password:password});
+            let res=await axios.post("/user-candidate-login",{email:email, password:password});
             hideLoader()
             if(res.status===200 && res.data['status']==='success'){
                 setToken(res.data['token'])
-                window.location.href="/userProfile";
+                window.location.href="/candidate-profile";
             }
             else{
                 errorToast(res.data['message']);
