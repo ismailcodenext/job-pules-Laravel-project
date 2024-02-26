@@ -68,13 +68,23 @@ Route::view('/resetPassword','pages.auth.reset-pass-page');
 Route::view('/userProfile','pages.dashboard.profile-page');
 Route::view('/dashboardSummary','pages.dashboard.dashboard-page');
 
+//
+////popap page route
+//Route::view('/popapRegistration','components.front-end.page.popap-page.registration-popap');
+//
+//
+//
+////company registration and login route -> Ismail Hossain
+////Route::view('/companyLogin','components')->name('login');
+//Route::view('/companyRegistration','pages.front-end-page.company.registration');
 
-//popap page route
-Route::view('/popapRegistration','components.front-end.page.popap-page.registration-popap');
+
+//Company registration and login route -> Ismail Hossain
+Route::view('/employer-registration','pages.front-end-page.company.registration');
+Route::view('/candidate-registration','pages.front-end-page.candidate.registration');
 
 
 
-//company registration and login route -> Ismail Hossain
-//Route::view('/companyLogin','components')->name('login');
-Route::view('/companyRegistration','pages.front-end-page.company.registration');
-
+// employer & candidate registration and login route -> Robiul
+Route::view('/employer-login','pages.front-end-page.company.login');
+Route::view('/candidate-login','pages.front-end-page.candidate.login');

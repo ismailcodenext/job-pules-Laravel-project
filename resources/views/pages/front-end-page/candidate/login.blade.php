@@ -1,7 +1,7 @@
 @extends('layout.master')
-@section('title','Employe Registration Page')
+@section('title','Candidate Login Page')
 @section('content')
     @include('components.front-end.components.navbar')
-    @include('components.front-end.page.company.company-registration')
+    @include('components.front-end.page.candidate.candidate-login')
     @include('components.front-end.components.footer')
 @endsection

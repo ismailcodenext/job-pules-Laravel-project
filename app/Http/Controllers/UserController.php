@@ -11,27 +11,57 @@ use Illuminate\Testing\Fluent\Concerns\Has;
 
 class UserController extends Controller
 {
-    function UserRegistration(Request $request){
+//    function UserRegistration(Request $request){
+//        try {
+//            $request->validate([
+//                'firstName' => 'required|string|max:50',
+//                'lastName' => 'required|string|max:50',
+//                'email' => 'required|string|email|max:50|unique:users,email',
+//                'mobile' => 'required|string|max:50',
+//                'password' => 'required|string|min:3'
+//            ]);
+//            User::create([
+//                'firstName' => $request->input('firstName'),
+//                'lastName' => $request->input('lastName'),
+//                'email' => $request->input('email'),
+//                'mobile' => $request->input('mobile'),
+//                'password' => Hash::make($request->input('password'))
+//            ]);
+//            return response()->json(['status' => 'success', 'message' => 'User Registration Successfully']);
+//        } catch (Exception $e) {
+//            return response()->json(['status' => 'fail', 'message' => $e->getMessage()]);
+//        }
+//}
+
+    public function UserRegistration(Request $request)
+    {
         try {
             $request->validate([
                 'firstName' => 'required|string|max:50',
                 'lastName' => 'required|string|max:50',
                 'email' => 'required|string|email|max:50|unique:users,email',
                 'mobile' => 'required|string|max:50',
-                'password' => 'required|string|min:3'
+                'password' => 'required|string|min:3',
+                'role' => 'required|in:employer,candidate,admin', // Add role validation
             ]);
-            User::create([
+
+            $user = new User([
                 'firstName' => $request->input('firstName'),
                 'lastName' => $request->input('lastName'),
                 'email' => $request->input('email'),
                 'mobile' => $request->input('mobile'),
-                'password' => Hash::make($request->input('password'))
+                'password' => Hash::make($request->input('password')),
+                'role' => $request->input('role'), // Set the role based on user input
+                'status' => $request->input('status'), // Default status to pending
             ]);
+
+            $user->save();
+
             return response()->json(['status' => 'success', 'message' => 'User Registration Successfully']);
         } catch (Exception $e) {
             return response()->json(['status' => 'fail', 'message' => $e->getMessage()]);
         }
-}
+    }
 
     function UserLogin(Request $request){
         try {

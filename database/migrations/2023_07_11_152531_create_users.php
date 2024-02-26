@@ -19,6 +19,8 @@ return new class extends Migration
             $table->string('mobile',50);
             $table->string('password',1000);
             $table->string('otp',10);
+            $table->enum('status', ['pending', 'approved'])->default('pending');
+            $table->enum('role', ['employer', 'candidate','admin'])->nullable();
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->useCurrent()->useCurrentOnUpdate();
         });

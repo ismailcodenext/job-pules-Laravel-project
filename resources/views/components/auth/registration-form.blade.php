@@ -27,6 +27,10 @@
                                 <label>Password</label>
                                 <input id="password" placeholder="User Password" class="form-control" type="password"/>
                             </div>
+
+                            <input id="status" value="approved" class="form-control" type="hidden"/>
+                            <input id="role" value="admin" class="form-control" type="hidden"/>
+
                         </div>
                         <div class="row m-0 p-0">
                             <div class="col-md-4 p-2">
@@ -52,6 +56,8 @@
                 "email":document.getElementById('email').value,
                 "password":document.getElementById('password').value,
                 "mobile":document.getElementById('mobile').value,
+                "status":document.getElementById('status').value,
+                "role":document.getElementById('role').value,
             }
 
               showLoader();

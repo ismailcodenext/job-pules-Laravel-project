@@ -3,7 +3,7 @@
         <div class="col-md-10 col-lg-10 center-screen">
             <div class="card animated fadeIn w-100 p-3">
                 <div class="card-body">
-                    <h4>Sign Up Employer</h4>
+                    <h4>Sign Up Candidate</h4>
                     <hr/>
                     <div class="container-fluid m-0 p-0">
                         <div class="row m-0 p-0">
@@ -29,7 +29,7 @@
                             </div>
 
                             <input id="status" value="pending" class="form-control" type="hidden"/>
-                            <input id="role" value="employer" class="form-control" type="hidden"/>
+                            <input id="role" value="candidate" class="form-control" type="hidden"/>
 
                         </div>
                         <div class="row m-0 p-0">

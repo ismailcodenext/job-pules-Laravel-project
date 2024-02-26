@@ -19,6 +19,18 @@
     <link rel="stylesheet" href="{{ asset('front-end/assets/css/about.css') }}">
     <!-- abouts Css End -->
 
+    <!-- sing up Css Start -->
+    <link rel="stylesheet" href="{{ asset('front-end/assets/css/sing-up.css') }}">
+    <!-- sing up Css End -->
+
+    {{-- login css start  --}}
+    <link rel="stylesheet" href="{{ asset('front-end/assets/css/loging.css') }}">
+    {{-- login css end  --}}
+
+    <!-- popap Css Start -->
+    <link rel="stylesheet" href="{{ asset('front-end/assets/css/popap.css') }}">
+    <!-- popap Css End -->
+
     <!-- job Css Start -->
     <link rel="stylesheet" href="{{ asset('front-end/assets/css/job.css') }}">
     <!-- job Css End -->
@@ -32,7 +44,7 @@
     <!-- Bootstrap Css Link End -->
 
 
-    
+
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
@@ -49,20 +61,37 @@
     <!-- Font Awesome Ctn End -->
 
     <!-- Axios start  -->
-    <link href="{{ asset('css/toastify.min.css') }}" rel="stylesheet" />
-    <script src="{{ asset('js/toastify-js.js') }}"></script>
-    <script src="{{ asset('js/axios.min.js') }}"></script>
-    <script src="{{ asset('js/config.js') }}"></script>
+    <link href="{{asset('css/bootstrap.css')}}" rel="stylesheet" />
+    <link href="{{asset('css/animate.min.css')}}" rel="stylesheet" />
+    <link href="{{asset('css/fontawesome.css')}}" rel="stylesheet" />
+    <link href="{{asset('css/style.css')}}" rel="stylesheet" />
+    <link href="{{asset('css/toastify.min.css')}}" rel="stylesheet" />
+    <script src="{{asset('js/toastify-js.js')}}"></script>
+    <script src="{{asset('js/axios.min.js')}}"></script>
+    <script src="{{asset('js/config.js')}}"></script>
     <!-- Axios end  -->
 
 </head>
 
 <body>
+<div id="loader" class="LoadingOverlay d-none">
+    <div class="Line-Progress">
+        <div class="indeterminate"></div>
+    </div>
+</div>
+
+
 
     <div>
         @yield('content')
     </div>
 
+
+    <!-- Popap js Link Start -->
+    <script src="{{ asset('front-end/assets/js/popap.js') }}"></script>
+    <!-- Popap js Link End -->
+
+    <script src="{{asset('js/bootstrap.bundle.js')}}"></script>
 
     <!-- Js link Start -->
     <script src="{{ asset('front-end/assets/js/tab.js') }}"></script>
