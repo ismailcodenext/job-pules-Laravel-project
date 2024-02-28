@@ -4,7 +4,10 @@
             <div class="card px-5 py-5">
                 <div class="row justify-content-between ">
                     <div class="align-items-center col">
-                        <h4>Companies List</h4>
+                        <h4>Job List</h4>
+                    </div>
+                    <div class="align-items-center col">
+                        <button data-bs-toggle="modal" data-bs-target="#create-modal" class="float-end btn m-0 bg-gradient-primary">Create</button>
                     </div>
                 </div>
                 <hr class="bg-dark "/>
@@ -12,9 +15,9 @@
                     <thead>
                     <tr class="bg-light">
                         <th>No</th>
-                        <th>Company Name</th>
+                        <th>Job Title</th>
                         <th>Status</th>
-                        {{-- <th>Description</th> --}}
+                        <th>Publish Date</th>
                         <th>Action</th>
                     </tr>
                     </thead>
@@ -34,7 +37,7 @@
 
         try {
             showLoader();
-            let res=await axios.get("/list-employer",HeaderToken());
+            let res=await axios.get("/list-job",HeaderToken());
             hideLoader();
 
             let tableList=$("#tableList");
@@ -43,11 +46,12 @@
             tableData.DataTable().destroy();
             tableList.empty();
 
-            res.data['employerData'].forEach(function (item,index) {
+            res.data['job_data'].forEach(function (item,index) {
                 let row=`<tr>
                     <td>${index+1}</td>
-                    <td>${item['firstName']}</td>
+                    <td>${item['job_title']}</td>
                     <td>${item['status']}</td>
+                    <td>${item['updated_at']}</td>
                     <td>
                         <button data-id="${item['id']}" class="btn editBtn btn-sm btn-outline-success">View</button>
                         <button data-id="${item['id']}" class="btn deleteBtn btn-sm btn-outline-danger">Delete</button>
